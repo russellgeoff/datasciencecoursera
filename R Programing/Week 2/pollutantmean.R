@@ -12,13 +12,13 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   ## Return the mean of the pollutant across all monitors list
   ## in the 'id' vector (ignoring NA values)
   
-  all_data = data.frame()
+  all_data <- data.frame()
   
-  id = formatC(id, width = 3, format = 'd', flag = '0')
+  id <- formatC(id, width = 3, format = 'd', flag = '0')
   
   for (i in id){
     csv_file <- read.csv(file=paste(directory,'/', i,'.csv', sep = ''))
-    csv_data = na.omit(csv_file[pollutant])
+    csv_data <- na.omit(csv_file[pollutant])
     all_data <- rbind(all_data, csv_data)
   }
   mean(all_data[[pollutant]])
